@@ -1,4 +1,4 @@
-package com.intvstrt.sort;
+package com.hackerrank.sort;
 
 import java.util.ArrayList;
 import java.util.HashMap;

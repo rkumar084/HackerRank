@@ -1,4 +1,4 @@
-package com.intvstrt.search;
+package com.hackerrank.search;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

@@ -1,4 +1,4 @@
-package com.intvstrt.sort;
+package com.hackerrank.sort;
 
 import java.util.Scanner;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package com.intvstrt.search;
+package com.hackerrank.search;
 
 import java.util.Scanner;
 

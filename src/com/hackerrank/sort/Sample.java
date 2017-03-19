@@ -1,4 +1,4 @@
-package com.intvstrt.sort;
+package com.hackerrank.sort;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
