@@ -3,20 +3,25 @@ package com.hackerrank.algorithms.warmup;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-// Given an array of large integers, can you find the sum of its elements.
-public class ArraySum {
+public class NumberOfMaxElements {
 
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
     int size = in.nextInt();
-    //int[] arr = new int[size];
 
-    BigInteger sum = BigInteger.ZERO;
+    long max = 0;
+    long maxCount = 0;
 
     for (int i = 0; i < size; i++) {
-      sum = sum.add(in.nextBigInteger());
+      long number = in.nextLong();
+      if (max < number) {
+        max = number;
+        maxCount = 1;
+      } else if (max == number) {
+        maxCount++;
+      }
     }
     in.close();
-    System.out.println(sum);
+    System.out.println(maxCount);
   }
 }
