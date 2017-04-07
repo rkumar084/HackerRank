@@ -1,7 +1,5 @@
 package com.hackerrank.algorithms.implementation;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
 import java.util.Scanner;
 
 /*A queen is standing on an  chessboard. The chessboard's rows are numbered from  to ,
@@ -41,12 +39,48 @@ public class QueensAttack2 {
     int rQueen = in.nextInt();
     int cQueen = in.nextInt();
 
-    HashMap<String, Integer> obstacleMap = new HashMap<>();
+    int maxBlockedLeft = 0;
+    int maxBlockedRight = 0;
+    int maxBlockedUp = 0;
+    int maxBlockedDown = 0;
+    int maxBlockedTopRight = 0;
+    int maxBlockedTopLeft = 0;
+    int maxBlockedBottomRight = 0;
+    int maxBlockedBottomLeft = 0;
 
     for (int a0 = 0; a0 < k; a0++) {
       int row = in.nextInt();
       int col = in.nextInt();
-      obstacleMap.put("" + row + col, col);
+
+      if (row == rQueen) {
+        if (col < cQueen) {
+          if (maxBlockedLeft < col) maxBlockedLeft = col;
+        } else {
+          if (maxBlockedRight < (n - col + 1)) maxBlockedRight = (n - col + 1);
+        }
+      } else if (col == cQueen) {
+        if (row < rQueen) {
+          if (maxBlockedDown < row) maxBlockedDown = row;
+        } else {
+          if (maxBlockedUp < (n - row + 1)) maxBlockedUp = (n - row + 1);
+        }
+      } else if ((row - rQueen) == (col - cQueen)) {
+        if (row > rQueen) {
+          if (maxBlockedTopRight < (n - Math.max(row, col) + 1))
+            maxBlockedTopRight = (n - Math.max(row, col) + 1);
+        } else {
+          if (maxBlockedBottomLeft < (Math.min(row, col)))
+            maxBlockedBottomLeft = (Math.min(row, col));
+        }
+      } else if ((row - rQueen) == -(col - cQueen)) {
+        if (row > rQueen) {
+          if (maxBlockedTopLeft < (Math.min(n - row + 1, col)))
+            maxBlockedTopLeft = (Math.min(n - row + 1, col));
+        } else {
+          if (maxBlockedBottomRight < (Math.min(n - col + 1, row)))
+            maxBlockedBottomRight = (Math.min(n - col + 1, row));
+        }
+      }
     }
     in.close();
 
@@ -82,40 +116,17 @@ public class QueensAttack2 {
       attackCount = attackCount + (n - cQueen);
     }
 
-    for (Entry<String, Integer> entry : obstacleMap.entrySet()) {
-      String key = entry.getKey();
-      int col = entry.getValue();
-      int rowNumberLen = key.length() - (col + "").length();
-      int row = Integer.parseInt(key.substring(0, rowNumberLen));
+    attackCount =
+        attackCount
+            - (maxBlockedLeft
+                + maxBlockedRight
+                + maxBlockedUp
+                + maxBlockedDown
+                + maxBlockedTopRight
+                + maxBlockedTopLeft
+                + maxBlockedBottomRight
+                + maxBlockedBottomLeft);
 
-      System.out.println(row + " " + col);
-      
-      if (row == rQueen) {
-        if (col < cQueen) {
-          attackCount = attackCount - col;
-        } else {
-          attackCount = attackCount - (n - col + 1);
-        }
-      } else if (col == cQueen) {
-        if (row < rQueen) {
-          attackCount = attackCount - row;
-        } else {
-          attackCount = attackCount - (n - row + 1);
-        }
-      } else if ((row - rQueen) == (col - cQueen)) {
-        if (row > rQueen) {
-          attackCount = attackCount - (n - Math.max(row, col) + 1);
-        } else {
-          attackCount = attackCount - (Math.min(row, col));
-        }
-      } else if ((row - rQueen) == -(col - cQueen)) {
-        if (row > rQueen) {
-          attackCount = attackCount - (Math.min(n - row + 1, col));
-        } else {
-          attackCount = attackCount - (Math.min(n - col + 1, row));
-        }
-      }
-    }
     System.out.println(attackCount);
   }
 }
