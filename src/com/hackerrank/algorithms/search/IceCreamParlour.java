@@ -1,4 +1,4 @@
-package com.hackerrank.algorithms.implementation;
+package com.hackerrank.algorithms.search;
 
 import java.util.Arrays;
 import java.util.HashMap;
