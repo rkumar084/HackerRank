@@ -18,7 +18,7 @@ public class CountLuck {
 				matrix[G_i] = in.next();
 			}
 			int k = in.nextInt();
-			results[a0] = hasPath(matrix, k, 1 , 0);
+			//results[a0] = hasPath(matrix, k, 1 , 0);
 		}
 		in.close();
 		for (int a0 = 0; a0 < t; a0++) {
@@ -29,17 +29,17 @@ public class CountLuck {
 		}
 	}
 	
-	private static boolean hasPath(String[] matrix, Integer k, Integer direction, Integer count) {
-		
-		if (k==0) {
-			
-		}
-		
-		
-		
-		
-		
-		
-	}
+//	private static boolean hasPath(String[] matrix, Integer k, Integer direction, Integer count) {
+//		
+//		if (k==0) {
+//			
+//		}
+//		
+//		
+//		
+//		
+//		
+//		
+//	}
 
 }
