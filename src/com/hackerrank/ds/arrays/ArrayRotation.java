@@ -1,29 +1,32 @@
-package com.hackerrank.sort;
+package com.hackerrank.ds.arrays;
 
 import java.util.Scanner;
 
-public class Sample2 {
+public class ArrayRotation {
+
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
-    int size = in.nextInt();
 
-    int[] numbers = new int[size];
+    int size = in.nextInt();
+    int rotations = in.nextInt();
+
+    int[] arr = new int[size];
+
     for (int i = 0; i < size; i++) {
-      numbers[i] = in.nextInt();
+      arr[i] = in.nextInt();
     }
     in.close();
 
-    StringBuilder output = new StringBuilder();
     boolean first = true;
-    for (int i = size - 1; i >= 0; i--) {
-
+    StringBuilder output = new StringBuilder();
+    for (int i = 0; i < size; i++) {
       if (first) {
         first = false;
       } else {
         output.append(" ");
       }
-      output.append(numbers[i]);
+      output.append(arr[(i + rotations) % size]);
     }
-    System.out.println(output.toString());
+    System.out.println(output);
   }
 }
